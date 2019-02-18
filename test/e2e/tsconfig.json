@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "es6",
+    "lib": [
+      "es5",
+      "dom",
+      "es2015.promise"
+    ],
+    "types": ["puppeteer"],
+    "module": "commonjs",
+    "allowSyntheticDefaultImports": true
+  },
+  "include": [
+    "src",
+    "utils",
+    "node_modules/@types/puppeteer/index.d.ts",
+    "node_modules/@types/jest/index.d.ts"
+  ]
+}

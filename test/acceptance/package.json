@@ -1,0 +1,21 @@
+{
+  "name": "react-testing-catharsis_acceptance",
+  "author": "Sébastien Dufour-Beauséjour",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "cypress:open": "NODE_ENV=development ./node_modules/.bin/cypress open",
+    "test": "NODE_ENV=development ./node_modules/.bin/cypress run"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@cypress/webpack-preprocessor": "4.0.3",
+    "@types/cypress": "1.1.3",
+    "@types/expect": "1.20.4",
+    "@types/chai": "4.1.7",
+    "cypress": "3.1.5",
+    "cypress-pipe": "1.3.3",
+    "ts-loader": "5.3.3"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "react-testing-catharsis_e2e",
+  "author": "Sébastien Dufour-Beauséjour",
+  "version": "0.1.0",
+  "scripts": {
+    "test": "jest --runInBand"
+  },
+  "dependencies": {
+    "puppeteer": "1.11.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.3.3",
+    "@babel/preset-env": "7.3.1",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/expect-puppeteer": "^3.3.1",
+    "@types/jest": "24.0.6",
+    "@types/jest-environment-puppeteer": "^2.2.1",
+    "@types/puppeteer": "^1.12.1",
+    "babel-jest": "24.1.0",
+    "jest": "24.0.0",
+    "jest-puppeteer": "3.9.0"
+  },
+  "jest": {
+    "preset": "jest-puppeteer",
+    "bail": true,
+    "setupFiles": ["./jest.setup.js"]
+  }
+}

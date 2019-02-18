@@ -1,44 +1,44 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### What is React Testing Catharsis?
 
-## Available Scripts
+The goal of this project is to create a boilerplate
+for a production ready React/Typescript application that is
+already setup to test using Enzyme, Cypress and Puppeteer.
 
-In the project directory, you can run:
+The project was initialized using [Create React App](https://github.com/facebook/create-react-app) for Typescript
+and 
 
-### `npm start`
+### Install
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+> _This repo uses yarn, but you can easily modify the scripts to use npm instead if you desire._
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Clone the repo and run this script in the root directory:
 
-### `npm test`
+`yarn install:all`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This will run yarn in the root directory and in both test directories (`test/acceptance` and `test/e2e`)
 
-### `npm run build`
+### Why three different testing frameworks?
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+These three frameworks were selected for their pros at different
+levels:
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+#### [Enzyme](https://airbnb.io/enzyme/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Enzyme is great for unit testing React components in isolation of the browser,
+without the fragility of snapshot tests. You can trigger lifecycles, update the props or
+manipulate the state directly while validating that elements are rendered via selectors.
 
-### `npm run eject`
+#### [Cypress](https://www.cypress.io/)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Cypress is often sold as the successor to the long-lived Selenium.
+It allows you to control your application via a real Chromium instance, but
+also enables manipulation of network requests, Redux store and much more.
+This allows you to put your application in a very precise state very easily, and makes
+testing specific parts of your application a breeze.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### [Puppeteer](https://pptr.dev/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Puppeteer is a project by Google that also allows you to control a real Chromium browser.
+One of the biggest difference with Cypress is that it allows you to manipulate multiple browsers and tabs
+simultaneously. This enables multi-user testing in an environnement very close
+to the real world. 
