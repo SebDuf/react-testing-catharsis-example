@@ -2,10 +2,9 @@
 
 The goal of this project is to create a boilerplate
 for a production ready React/Typescript application that is
-already setup to test using Enzyme, Cypress and Puppeteer.
+already setup to test using Enzyme, Cypress, Puppeteer and Storybooks.
 
 The project was initialized using [Create React App](https://github.com/facebook/create-react-app) for Typescript
-and 
 
 ### Install
 
@@ -47,15 +46,24 @@ to the real world.
 
 Storybook allows you to build visual components in a sandbox and create a knowledge base on how
 to use your projects' custom components. By itself, it might not be obvious how it fits in your
-testing toolbox, but external services allows you to do visual regression testing of your components,
-thanks to your Storybook.
+testing toolbox, but with plugins and/or external services, it allows you to do visual regression
+testing of your components in a compartementalized manner.
 
-#### [Chromatic](https://www.chromaticqa.com/) 
+#### Storybook + Storyshots 
 
-Visual regression testing built for Storybook by Storybook maintainers.
+This project is setup with Storybooks and Storyshots to do visual regression testing. Storyshots is
+configured with the Puppeteer plugin to take screenshots of your Storybook stories, and will compare
+every one of your stories for visual regression. You must commit and push the screenshots generated,
+in the same way one might do with snapshots from Jest.
 
-#### [Happo](https://happo.io/) 
+When a difference is located, a comparaison image will be generated, and you can update the snapshot once
+the difference is approved and/or fixed.
 
-Visual regression testing that supports cross-browser testing. Has a [plugin](https://github.com/happo/happo-plugin-storybook) to support Storybooks.
+#### Other visual testing solutions
 
+* [Loki](https://loki.js.org/)
+* [Chromatic](https://www.chromaticqa.com/) 
+* [Happo](https://happo.io/) 
+* [Percy](https://percy.io/) 
+* [Screener](https://screener.io/) 
 
