@@ -6,10 +6,11 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "install:all": "yarn & yarn --cwd './test/acceptance' & yarn --cwd './test/e2e'",
-    "test": "node scripts/test.js",
+    "test": "jest --testPathIgnorePatterns storyshots.test.js",
+    "test:storybook": "jest storyshots.test.js",
     "test:acceptance": "yarn --cwd './test/acceptance' test",
     "test:e2e": "yarn --cwd './test/e2e' test",
-    "test:all": "yarn test & yarn test:acceptance & yarn test:e2e",
+    "test:all": "yarn test && yarn test:storybook && yarn test:acceptance && yarn test:e2e",
     "storybook": "start-storybook -p 6006 -c .storybook",
     "build-storybook": "build-storybook"
   },

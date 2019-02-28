@@ -16,6 +16,8 @@ describe('E2E test', () => {
   });
 
   it('should be able to launch three browsers simultaneously', async () => {
+    jest.setTimeout(30000);
+
     const [Browser1, Browser2, Browser3] = await Promise.all([
       createIndependantClient(browsers),
       createIndependantClient(browsers),
