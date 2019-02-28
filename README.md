@@ -42,3 +42,20 @@ Puppeteer is a project by Google that also allows you to control a real Chromium
 One of the biggest difference with Cypress is that it allows you to manipulate multiple browsers and tabs
 simultaneously. This enables multi-user testing in an environnement very close
 to the real world. 
+
+### Why Storybook?
+
+Storybook allows you to build visual components in a sandbox and create a knowledge base on how
+to use your projects' custom components. By itself, it might not be obvious how it fits in your
+testing toolbox, but external services allows you to do visual regression testing of your components,
+thanks to your Storybook.
+
+#### [Chromatic](https://www.chromaticqa.com/) 
+
+Visual regression testing built for Storybook by Storybook maintainers.
+
+#### [Happo](https://happo.io/) 
+
+Visual regression testing that supports cross-browser testing. Has a [plugin](https://github.com/happo/happo-plugin-storybook) to support Storybooks.
+
+
