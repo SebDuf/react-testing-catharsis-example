@@ -14,7 +14,11 @@ initStoryshots({
         // display 'table' is optional, but it prevents div's from using the full viewport width
         document.body.style.display = 'table';
         const { height, width, left: x, top: y } = document.body.getBoundingClientRect();
-        return { x, y, height, width };
+
+        const cornerX = x - 5;
+        const cornerY = y - 5;
+
+        return { x: cornerX < 0 ? 0 : cornerX, y: cornerY < 0 ? 0 : cornerY, height: height + 10, width: width + 10 };
       });
     },
     getScreenshotOptions: ({ context: { clip } }) => {
