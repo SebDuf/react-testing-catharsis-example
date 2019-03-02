@@ -1,14 +1,16 @@
 const translations = {
   fr: {
     authentication: {
-      email: 'Courriel',
+      username: 'Nom d\'utilisateur ',
       password: 'Mot de passe',
+      login: 'Connexion',
     },
   },
   en: {
     authentication: {
-      email: 'Email',
+      username: 'Username',
       password: 'Password',
+      login: 'Login',
     },
   },
 };

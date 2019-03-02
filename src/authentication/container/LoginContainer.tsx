@@ -25,9 +25,7 @@ class LoginContainer extends Component<AllProps> {
 
   public render(): JSX.Element {
     return (
-      <div>
-        <Login onLogin={this.handleLogin} />
-      </div>
+      <Login onLogin={this.handleLogin} />
     );
   }
 
