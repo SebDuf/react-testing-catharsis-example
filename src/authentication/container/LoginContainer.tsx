@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { RouteComponentProps, withRouter } from 'react-router';
-
-import { Login } from '../component';
-import { loginAction } from '../action';
+import { Login } from 'src/authentication/component';
+import { loginAction } from 'src/authentication/action';
 
 interface Props {
   actions: {
