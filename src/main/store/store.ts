@@ -1,9 +1,18 @@
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import thunk from 'redux-thunk';
+
+import { AuthenticationState } from '../../authentication/reducer/authenticationReducer';
 
 import rootReducer from './reducers';
 
+export interface ApplicationStore {
+  authentication: AuthenticationState;
+}
+
 export default createStore(
   rootReducer,
-  composeWithDevTools(),
+  composeWithDevTools(
+    applyMiddleware(thunk),
+  ),
 );

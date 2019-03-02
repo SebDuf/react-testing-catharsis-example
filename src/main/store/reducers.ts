@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import authentication from '../../authentication/store/authenticationReducer';
+import authentication from '../../authentication/reducer/authenticationReducer';
 
 export interface Action {
   type: string;
