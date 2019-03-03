@@ -61,18 +61,18 @@ export class Login extends React.Component<AllProps> {
         <StyledForm onSubmit={this.handleSubmit}>
           <Form.Item>
             {usernameFormRule(
-              <Input placeholder={t('username')} prefix={<InputIcon type="user" />} />,
+              <Input data-testid="loginUsernameInput" placeholder={t('username')} prefix={<InputIcon type="user" />} />,
             )}
           </Form.Item>
 
           <Form.Item>
             {passwordFormRule(
-              <Input placeholder={t('password')} prefix={<InputIcon type="lock" />} type="password" />,
+              <Input data-testid="loginPasswordInput" placeholder={t('password')} prefix={<InputIcon type="lock" />} type="password" />,
             )}
           </Form.Item>
 
           <Form.Item>
-            <Button htmlType="submit" type="primary">
+            <Button data-testid="loginButton" htmlType="submit" type="primary">
               {t('login')}
             </Button>
           </Form.Item>

@@ -6,7 +6,7 @@ import { LoginContainer } from '../../authentication/container';
 import PrivateRoute from './PrivateRoute';
 
 function LoggedIn(): JSX.Element {
-  return <div>Logged in</div>;
+  return <div data-testid="main">Logged in</div>;
 }
 
 function Router(): JSX.Element {
