@@ -1,20 +1,17 @@
 import React from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import { DashboardContainer } from 'src/dashboard/container/DashboardContainer';
 
 import { LoginContainer } from '../../authentication/container';
 
 import PrivateRoute from './PrivateRoute';
-
-function LoggedIn(): JSX.Element {
-  return <div data-testid="main">Logged in</div>;
-}
 
 function Router(): JSX.Element {
   return (
     <BrowserRouter>
       <Switch>
         <Route component={LoginContainer} exact path="/login" />
-        <PrivateRoute component={LoggedIn} path="/" />
+        <PrivateRoute component={DashboardContainer} path="/" />
         <Redirect to="/login" />
       </Switch>
     </BrowserRouter>
