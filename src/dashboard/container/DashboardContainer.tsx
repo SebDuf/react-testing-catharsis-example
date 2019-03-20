@@ -1,37 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Icon, Menu } from 'antd';
+import { TopNavigationBar } from 'src/dashboard/component/TopNavigationBar';
 
 interface State {
-  selectedTabs: string[];
+  selectedTab: string;
 }
 
 class DashboardContainer extends Component<{}, State> {
 
   public state = {
-    selectedTabs: ['home'],
+    selectedTab: 'home',
   };
 
   public render(): JSX.Element {
     return (
       <div>
-        <Menu
-          mode="horizontal"
-          selectedKeys={this.state.selectedTabs}
-        >
-          <Menu.Item key="home">
-            <Icon type="home" />
-            Home
-          </Menu.Item>
-          <Menu.Item key="jobs">
-            <Icon type="rocket" />
-            Jobs
-          </Menu.Item>
-          <Menu.Item key="alipay">
-            <Icon type="idcard" />
-            Applied
-          </Menu.Item>
-        </Menu>
+        <TopNavigationBar
+          active={this.state.selectedTab}
+          onChange={(tab: string) => this.setState({ selectedTab: tab })}
+        />
       </div>
     );
   }
