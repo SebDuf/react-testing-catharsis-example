@@ -7,3 +7,11 @@ export const loginAction = () => {
     });
   };
 };
+
+export const authenticate = () => {
+  return async (dispatch: Function) => {
+    dispatch({
+      type: LOGIN,
+    });
+  };
+};
