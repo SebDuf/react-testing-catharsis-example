@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Button, Icon, Menu } from 'antd';
+import { Icon, Menu } from 'antd';
 import { SelectParam } from 'antd/lib/menu';
 import styled from 'styled-components';
+import { withTranslation, WithTranslation } from 'react-i18next';
+import { LanguagePicker } from 'src/dashboard/component/LanguagePicker';
 
 const MainMenu = styled(Menu)`
     display: flex;
@@ -16,22 +18,22 @@ const Secondary = styled.li`
     margin-right: 20px;
 `;
 
-const LanguageButton = styled(Button)`
-    box-shadow: none;
-`;
-
 interface Props {
   active: string;
   onChange: (param: string) => void;
 }
 
-export class TopNavigationBar extends Component<Props> {
+type AllProps = Props & WithTranslation
+
+class TopNavigationBar extends Component<AllProps> {
 
   private onTabChange = (params: SelectParam) => {
     this.props.onChange(params.key);
   };
 
   public render(): JSX.Element {
+    const { t } = this.props;
+
     return (
       <MainMenu
         mode="horizontal"
@@ -40,22 +42,26 @@ export class TopNavigationBar extends Component<Props> {
       >
         <Menu.Item key="home">
           <Icon type="home" />
-          Home
+          {t('home')}
         </Menu.Item>
         <Menu.Item key="jobs">
           <Icon type="rocket" />
-          Jobs
+          {t('jobs')}
         </Menu.Item>
         <Menu.Item key="alipay">
           <Icon type="idcard" />
-          Applied
+          {t('applied')}
         </Menu.Item>
 
         <Secondary>
-          <LanguageButton icon="global" shape="circle" />
+          <LanguagePicker />
         </Secondary>
       </MainMenu>
     );
   }
 
 }
+
+const componentWithTranslation = withTranslation('dashboard')(TopNavigationBar);
+
+export default componentWithTranslation;

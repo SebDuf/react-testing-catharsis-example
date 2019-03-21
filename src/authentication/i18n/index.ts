@@ -1,7 +1,7 @@
 const translations = {
   fr: {
     authentication: {
-      username: 'Nom d\'utilisateur ',
+      username: 'Nom d\'utilisateur',
       password: 'Mot de passe',
       login: 'Connexion',
     },

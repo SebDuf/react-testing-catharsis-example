@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { TopNavigationBar } from 'src/dashboard/component/TopNavigationBar';
+import TopNavigationBar from 'src/dashboard/component/TopNavigationBar';
 
 interface State {
   selectedTab: string;
