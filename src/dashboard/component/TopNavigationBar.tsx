@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
-import { Icon, Menu } from 'antd';
+import { Button, Icon, Menu } from 'antd';
 import { SelectParam } from 'antd/lib/menu';
 import styled from 'styled-components';
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { LanguagePicker } from 'src/dashboard/component/LanguagePicker';
 import { Tabs } from 'src/main/container/MainContainer';
 import { RouteComponentProps, withRouter } from 'react-router';
+import { connect } from 'react-redux';
+import { logoutAction } from 'src/authentication/action';
+import { getAuthenticated } from 'src/authentication/selector';
+import { ApplicationStore } from 'src/main/store/store';
 
 const MainMenu = styled(Menu)`
     display: flex;
@@ -20,8 +24,16 @@ const Secondary = styled.li`
     margin-right: 20px;
 `;
 
+const LogoutButton = styled(Button)`
+    margin-left: 10px;
+`;
+
 interface Props {
+  actions: {
+    logout: () => void;
+  };
   active: string;
+  isAuthenticated: boolean;
   onChange: (param: string) => void;
 }
 
@@ -34,7 +46,7 @@ class TopNavigationBar extends Component<AllProps> {
   };
 
   public render(): JSX.Element {
-    const { t } = this.props;
+    const { isAuthenticated, t } = this.props;
 
     return (
       <MainMenu
@@ -57,6 +69,9 @@ class TopNavigationBar extends Component<AllProps> {
 
         <Secondary>
           <LanguagePicker />
+          {isAuthenticated &&
+            <LogoutButton icon="logout" onClick={this.props.actions.logout} shape="circle" />
+          }
         </Secondary>
       </MainMenu>
     );
@@ -64,7 +79,22 @@ class TopNavigationBar extends Component<AllProps> {
 
 }
 
-const componentWithTranslation = withTranslation('dashboard')(TopNavigationBar);
+function mapStateToProps(state: ApplicationStore) {
+  return {
+    isAuthenticated: getAuthenticated(state),
+  };
+}
+
+function mapDispatchToProps(dispatch: Function) {
+  return {
+    actions: {
+      logout: () => dispatch(logoutAction()),
+    },
+  };
+}
+
+const componentWithRedux = connect(mapStateToProps, mapDispatchToProps)(TopNavigationBar);
+const componentWithTranslation = withTranslation('dashboard')(componentWithRedux);
 const componentWithRouter = withRouter(componentWithTranslation);
 
 export default componentWithRouter;

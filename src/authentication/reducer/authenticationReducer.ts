@@ -1,6 +1,7 @@
 import { Action } from '../../main/store/reducers';
 
 export const LOGIN = 'authentication/LOGIN';
+export const LOGOUT = 'authentication/LOGOUT';
 
 export interface AuthenticationState {
   authenticated: boolean;
@@ -16,6 +17,13 @@ export default function reducer(state: AuthenticationState = initialState, actio
       return {
         ...state,
         authenticated: true,
+      };
+    }
+
+    case LOGOUT: {
+      return {
+        ...state,
+        authenticated: false,
       };
     }
 
