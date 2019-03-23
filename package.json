@@ -1,18 +1,11 @@
 {
-  "name": "react-testing-catharsis",
+  "name": "psc-csgmes-2019",
   "author": "Sébastien Dufour-Beauséjour",
   "version": "0.1.0",
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "install:all": "yarn & yarn --cwd './test/acceptance' & yarn --cwd './test/e2e'",
-    "test": "jest --testPathIgnorePatterns storyshots.test.js",
-    "test:storybook": "jest storyshots.test.js",
-    "test:acceptance": "yarn --cwd './test/acceptance' test",
-    "test:e2e": "yarn --cwd './test/e2e' test",
-    "test:all": "yarn test && yarn test:storybook && yarn test:acceptance && yarn test:e2e",
-    "storybook": "start-storybook -p 6006 -c .storybook",
-    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@babel/core": "7.2.2",
@@ -102,12 +95,6 @@
   ],
   "devDependencies": {
     "@babel/plugin-proposal-throw-expressions": "^7.2.0",
-    "@storybook/addon-actions": "^4.1.13",
-    "@storybook/addon-links": "^4.1.13",
-    "@storybook/addon-storyshots": "^4.1.13",
-    "@storybook/addon-storyshots-puppeteer": "^4.1.13",
-    "@storybook/addons": "^4.1.13",
-    "@storybook/react": "^4.1.13",
     "@types/enzyme": "^3.9.0",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@typescript-eslint/eslint-plugin": "^1.3.0",

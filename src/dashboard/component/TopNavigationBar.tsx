@@ -24,7 +24,15 @@ const Secondary = styled.li`
     margin-right: 20px;
 `;
 
+const ProfileButton = styled(Button)`
+    margin-left: 10px;
+`;
+
 const LogoutButton = styled(Button)`
+    margin-left: 10px;
+`;
+
+const LoginButtons = styled(Button)`
     margin-left: 10px;
 `;
 
@@ -44,6 +52,19 @@ class TopNavigationBar extends Component<AllProps> {
   private onTabChange = (params: SelectParam) => {
     this.props.onChange(params.key);
   };
+
+  private goToLogin = () => {
+    this.props.history.push('/login');
+  }
+
+  private goToProfile = () => {
+    this.props.history.push('/profile');
+  }
+
+  private onLogout = () => {
+    this.props.actions.logout();
+    this.props.history.push('/');
+  }
 
   public render(): JSX.Element {
     const { isAuthenticated, t } = this.props;
@@ -69,8 +90,17 @@ class TopNavigationBar extends Component<AllProps> {
 
         <Secondary>
           <LanguagePicker />
-          {isAuthenticated &&
-            <LogoutButton icon="logout" onClick={this.props.actions.logout} shape="circle" />
+          {isAuthenticated ?
+            <>
+              <ProfileButton icon="user" onClick={this.goToProfile} shape="circle" />
+              <LogoutButton icon="logout" onClick={this.onLogout} shape="circle" />
+            </>
+            :
+            <>
+              <LoginButtons onClick={this.goToLogin}>
+                {t('login')}
+              </LoginButtons>
+            </>
           }
         </Secondary>
       </MainMenu>

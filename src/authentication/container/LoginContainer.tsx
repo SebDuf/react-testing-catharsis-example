@@ -19,7 +19,7 @@ type AllProps = Props & RouteComponentProps;
 class LoginContainer extends Component<AllProps> {
 
   public componentDidMount(): void {
-    this.props.actions.authenticate();
+    // this.props.actions.authenticate();
   }
 
   public componentDidUpdate(): void {

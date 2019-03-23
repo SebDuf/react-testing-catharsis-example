@@ -4,6 +4,7 @@ const translations = {
       home: 'Accueil',
       jobs: 'Emplois',
       applied: 'Appliqués',
+      login: 'Connexion',
     },
   },
   en: {
@@ -11,6 +12,7 @@ const translations = {
       home: 'Home',
       jobs: 'Jobs',
       applied: 'Applied',
+      login: 'Login',
     },
   },
 };
