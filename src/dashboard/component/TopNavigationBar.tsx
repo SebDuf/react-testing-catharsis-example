@@ -123,8 +123,8 @@ function mapDispatchToProps(dispatch: Function) {
   };
 }
 
-const componentWithTranslation = withTranslation('dashboard')(TopNavigationBar);
-const componentWithRedux = connect(mapStateToProps, mapDispatchToProps)(componentWithTranslation);
-const componentWithRouter = withRouter(componentWithRedux);
+const componentWithRedux = connect(mapStateToProps, mapDispatchToProps)(TopNavigationBar);
+const componentWithTranslation = withTranslation('dashboard')(componentWithRedux);
+const componentWithRouter = withRouter(componentWithTranslation);
 
 export default componentWithRouter;

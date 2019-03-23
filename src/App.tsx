@@ -6,6 +6,8 @@ import { store } from './main/store';
 import { i18n } from './main/i18n';
 import Router from './main/router/Router';
 
+export const appRootId = 'App-root';
+
 function App(): JSX.Element {
   return (
     <Provider store={store}>
