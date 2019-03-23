@@ -4,8 +4,6 @@ import { RouteComponentProps, withRouter } from 'react-router';
 import { ApplicationStore } from 'src/main/store/store';
 import { getProfile } from 'src/profile/selector';
 
-import User from '../component/User';
-
 interface Props {
   profile: any;
 }
@@ -16,7 +14,7 @@ class ProfileContainer extends Component<AllProps> {
 
   public render(): JSX.Element {
     return (
-      <User profile={this.props.profile} />
+      <div>profile container</div>
     );
   }
 
