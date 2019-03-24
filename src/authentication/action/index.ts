@@ -23,6 +23,15 @@ export const loginAction = () => {
   };
 };
 
+export const signupAction = (username: string, password: string, profile: any) => {
+  return async (dispatch: Function) => {
+    dispatch({
+      type: PROFILE,
+      profile,
+    });
+  };
+};
+
 export const authenticate = () => {
   return async (dispatch: Function) => {
     dispatch({
