@@ -19,6 +19,7 @@ function Router(): JSX.Element {
         <DefaultRoute component={DashboardContainer} exact path="/" />
         <DefaultRoute component={JobsContainer} exact path="/jobs" />
         <DefaultRoute component={SearchContainer} exact path="/search" />
+        <DefaultPrivateRoute component={ProfileContainer} exact path="/profile" />
         <DefaultPrivateRoute component={ProfileContainer} exact path="/profile/:id" />
         <DefaultPrivateRoute component={AppliedContainer} exact path="/applied" />
         <Redirect to="/login" />

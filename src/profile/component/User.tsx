@@ -2,9 +2,27 @@ import React, { Component } from 'react';
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { RouteComponentProps, withRouter } from 'react-router';
 import { connect } from 'react-redux';
-import { logoutAction } from 'src/authentication/action';
-import { getAuthenticated } from 'src/authentication/selector';
-import { ApplicationStore } from 'src/main/store/store';
+import styled from 'styled-components';
+
+const Root = styled.div`
+    justify-content: center;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
+const Names = styled.div`
+    display: flex;
+`;
+
+const Name = styled.p`
+    font-size: 16px;
+`;
+
+const FirstName = styled(Name)`
+    margin-right: 5px;
+    font-weight: bold;
+`;
 
 interface Props {
   profile: any;
@@ -12,36 +30,31 @@ interface Props {
 
 type AllProps = Props & WithTranslation & RouteComponentProps
 
-class TopNavigationBar extends Component<AllProps> {
+class User extends Component<AllProps> {
 
   public render(): JSX.Element {
     const { profile } = this.props;
 
     return (
-      <pre>
+      <Root>
+        <Names>
+          <FirstName>{profile.name}</FirstName>
+          <Name>{profile.lastName}</Name>
+        </Names>
         {JSON.stringify(profile, null, 2)}
-      </pre>
+      </Root>
     );
   }
 
 }
 
-function mapStateToProps(state: ApplicationStore) {
+function mapStateToProps() {
   return {
-    isAuthenticated: getAuthenticated(state),
   };
 }
 
-function mapDispatchToProps(dispatch: Function) {
-  return {
-    actions: {
-      logout: () => dispatch(logoutAction()),
-    },
-  };
-}
-
-const componentWithRedux = connect(mapStateToProps, mapDispatchToProps)(TopNavigationBar);
-const componentWithTranslation = withTranslation('dashboard')(componentWithRedux);
+const componentWithRedux = connect(mapStateToProps)(User);
+const componentWithTranslation = withTranslation('profile')(componentWithRedux);
 const componentWithRouter = withRouter(componentWithTranslation);
 
 export default componentWithRouter;

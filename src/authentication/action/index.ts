@@ -14,6 +14,7 @@ export const loginAction = () => {
         name: 'Bob',
         lastName: 'Smith',
         id: '278534',
+        type: 'seeker',
       },
     });
   };

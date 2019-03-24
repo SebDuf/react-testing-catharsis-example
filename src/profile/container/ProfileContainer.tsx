@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { RouteComponentProps, withRouter } from 'react-router';
 import { ApplicationStore } from 'src/main/store/store';
-import { getSpecificProfile } from 'src/profile/selector';
+import { getProfile, getSpecificProfile } from 'src/profile/selector';
 
 import User from '../component/User';
 
@@ -24,12 +24,20 @@ class ProfileContainer extends Component<AllProps> {
 
 function mapStateToProps(state: ApplicationStore, ownProps: any) {
   const { id } = ownProps.match.params;
-  const profile = getSpecificProfile(state, id);
+  let profile = null;
 
+  if (!id) {
+    profile = getProfile(state);
+  } else {
+    profile = getSpecificProfile(state, id);
+  }
+
+  console.log('profile', profile);
   if (!profile) {
     ownProps.history.push('/');
     return {};
   }
+
   return {
     profile,
   };
