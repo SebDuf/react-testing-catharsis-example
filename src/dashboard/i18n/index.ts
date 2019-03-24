@@ -3,7 +3,7 @@ const translations = {
     dashboard: {
       home: 'Accueil',
       jobs: 'Emplois',
-      applied: 'Appliqués',
+      resume: 'CVs',
       login: 'Connexion',
     },
   },
@@ -11,7 +11,7 @@ const translations = {
     dashboard: {
       home: 'Home',
       jobs: 'Jobs',
-      applied: 'Applied',
+      resume: 'Resumes',
       login: 'Login',
     },
   },

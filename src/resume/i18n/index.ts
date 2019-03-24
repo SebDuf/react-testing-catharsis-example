@@ -1,10 +1,10 @@
 const translations = {
   fr: {
-    applied: {
+    resume: {
     },
   },
   en: {
-    applied: {
+    resume: {
     },
   },
 };

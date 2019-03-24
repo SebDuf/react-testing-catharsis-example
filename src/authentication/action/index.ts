@@ -15,6 +15,8 @@ export const loginAction = () => {
         lastName: 'Smith',
         id: '278534',
         type: 'seeker',
+        description: 'I am a very good mafia boss please hire',
+        preferences: 'Mafia Boss',
       },
     });
   };

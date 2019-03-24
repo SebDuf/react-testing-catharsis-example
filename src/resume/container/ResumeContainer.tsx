@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-class AppliedContainer extends Component {
+class ResumeContainer extends Component {
 
   public render(): JSX.Element {
     return (
       <div>
-       applied
+       resumes
       </div>
     );
   }
@@ -21,6 +21,6 @@ function mapDispatchToProps() {
   return {};
 }
 
-const componentWithRedux = connect(mapStateToProps, mapDispatchToProps)(AppliedContainer);
+const componentWithRedux = connect(mapStateToProps, mapDispatchToProps)(ResumeContainer);
 
-export { componentWithRedux as AppliedContainer };
+export { componentWithRedux as ResumeContainer };

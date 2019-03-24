@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { DashboardContainer } from 'src/dashboard/container/DashboardContainer';
 import { JobsContainer } from 'src/jobs/container/JobsContainer';
-import { AppliedContainer } from 'src/applied/container/DashboardContainer';
+import { ResumeContainer } from 'src/resume/container/ResumeContainer';
 
 import { LoginContainer } from '../../authentication/container';
 import { ProfileContainer } from '../../profile/container';
@@ -21,7 +21,7 @@ function Router(): JSX.Element {
         <DefaultRoute component={SearchContainer} exact path="/search" />
         <DefaultPrivateRoute component={ProfileContainer} exact path="/profile" />
         <DefaultPrivateRoute component={ProfileContainer} exact path="/profile/:id" />
-        <DefaultPrivateRoute component={AppliedContainer} exact path="/applied" />
+        <DefaultPrivateRoute component={ResumeContainer} exact path="/resume" />
         <Redirect to="/login" />
       </Switch>
     </BrowserRouter>

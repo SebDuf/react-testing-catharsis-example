@@ -13,7 +13,7 @@ export default function reducer(state: JobsState = initialState, action: any): J
     case JOBS:
       return {
         ...state,
-        jobs: action.profile,
+        jobs: action.jobs,
       };
 
     default:

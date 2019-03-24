@@ -87,9 +87,9 @@ class TopNavigationBar extends Component<AllProps> {
           <Icon type="rocket" />
           {t('jobs')}
         </Menu.Item>
-        <Menu.Item key={Tabs.APPLIED} onClick={() => this.props.history.push('/applied')}>
+        <Menu.Item key={Tabs.RESUME} onClick={() => this.props.history.push('/resume')}>
           <Icon type="idcard" />
-          {t('applied')}
+          {t('resume')}
         </Menu.Item>
 
         <ProfileButton icon="search" onClick={this.goToSearch} shape="circle" />

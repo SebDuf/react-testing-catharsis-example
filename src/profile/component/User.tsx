@@ -24,6 +24,10 @@ const FirstName = styled(Name)`
     font-weight: bold;
 `;
 
+const Description = styled.p`
+  font-size: 14px;
+`;
+
 interface Props {
   profile: any;
 }
@@ -41,6 +45,8 @@ class User extends Component<AllProps> {
           <FirstName>{profile.name}</FirstName>
           <Name>{profile.lastName}</Name>
         </Names>
+
+        <Description>{profile.description}</Description>
         {JSON.stringify(profile, null, 2)}
       </Root>
     );

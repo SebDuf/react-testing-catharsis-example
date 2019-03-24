@@ -1,11 +1,16 @@
 import React from 'react';
 import TopNavigationBar from 'src/dashboard/component/TopNavigationBar';
 import Router from 'src/main/router/Router';
+import styled from 'styled-components';
+
+const Root = styled.div`
+    height: 100%;
+`;
 
 export enum Tabs {
   HOME = 'home',
   JOBS = 'jobs',
-  APPLIED = 'applied'
+  RESUME = 'applied'
 }
 
 interface State {
@@ -22,13 +27,13 @@ class MainContainer extends React.Component<{}, State> {
     const { selectedTab } = this.state;
 
     return (
-      <div>
+      <Root>
         <TopNavigationBar
           active={selectedTab}
           onChange={(tab: string) => this.setState({ selectedTab: tab })}
         />
         <Router />
-      </div>
+      </Root>
     );
   }
 

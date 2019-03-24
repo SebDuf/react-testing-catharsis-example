@@ -8,6 +8,16 @@ export const fetchJobs = () => {
         title: 'Software Developper',
         city: 'Quebec',
         salaryRange: '50k-60k',
+      },
+      {
+        title: 'Teacher',
+        city: 'Montreal',
+        salaryRange: '40k-50k',
+      },
+      {
+        title: 'Mafia Boss',
+        city: 'Rivière-du-Loup',
+        salaryRange: '3k-7k',
       }],
     });
   };
