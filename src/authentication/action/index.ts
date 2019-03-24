@@ -17,6 +17,7 @@ export const loginAction = () => {
         type: 'seeker',
         description: 'I am a very good mafia boss please hire',
         preferences: 'Mafia Boss',
+        address: '2346 avenue Laurier, Quebec, Canada'
       },
     });
   };

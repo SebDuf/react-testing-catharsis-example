@@ -3,12 +3,16 @@ import { withTranslation, WithTranslation } from 'react-i18next';
 import { RouteComponentProps, withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { saveProfile } from 'src/profile/action';
+import { Input, Button } from 'antd';
 
 const Root = styled.div`
     justify-content: center;
     display:flex;
     flex-direction: column;
     align-items: center;
+    max-width: 400px;
+    margin: auto;
 `;
 
 const Names = styled.div`
@@ -29,15 +33,55 @@ const Description = styled.p`
 `;
 
 interface Props {
+  actions: {
+    saveProfile: (profile: any) => void;
+  };
   profile: any;
+}
+
+interface State {
+  description: string;
+  edit: boolean;
 }
 
 type AllProps = Props & WithTranslation & RouteComponentProps
 
-class User extends Component<AllProps> {
+class User extends Component<AllProps, State> {
+
+  public state = {
+    description: '',
+    edit: false,
+  }
+
+  public componentDidMount(): void {
+    this.setState({
+      description: this.props.profile.description,
+    });
+  }
+
+  public enableEdit = () => {
+    this.setState({ edit: true });
+  }
+
+  private saveProfile = () => {
+    const oldProfile = this.props.profile;
+
+    const newProfile = {
+      ...oldProfile,
+      description: this.state.description,
+    };
+
+    this.props.actions.saveProfile(newProfile);
+
+    this.setState({ edit: false });
+  }
+
+  private handleDescriptionChange(description: string) {
+    this.setState({ description });
+  }
 
   public render(): JSX.Element {
-    const { profile } = this.props;
+    const { profile, t } = this.props;
 
     return (
       <Root>
@@ -46,7 +90,25 @@ class User extends Component<AllProps> {
           <Name>{profile.lastName}</Name>
         </Names>
 
-        <Description>{profile.description}</Description>
+        {this.state.edit ?
+          <Input onChange={(event) => this.handleDescriptionChange(event.target.value)} value={this.state.description} />
+          :
+          <Description>{profile.description}</Description>
+        }
+
+        <Description>
+          {t('preferences')}
+:
+          {' '}
+          {profile.preferences}
+        </Description>
+
+        {this.state.edit ?
+          <Button icon="save" onClick={() => this.saveProfile()}>{t('save')}</Button>
+          :
+          <Button icon="edit" onClick={() => this.setState({ edit: true })}>{t('edit')}</Button>
+        }
+
         {JSON.stringify(profile, null, 2)}
       </Root>
     );
@@ -59,7 +121,15 @@ function mapStateToProps() {
   };
 }
 
-const componentWithRedux = connect(mapStateToProps)(User);
+function mapDispatchToProps(dispatch: any) {
+  return {
+    actions: {
+      saveProfile: (profile: any) => dispatch(saveProfile(profile)),
+    },
+  };
+}
+
+const componentWithRedux = connect(mapStateToProps, mapDispatchToProps)(User);
 const componentWithTranslation = withTranslation('profile')(componentWithRedux);
 const componentWithRouter = withRouter(componentWithTranslation);
 
