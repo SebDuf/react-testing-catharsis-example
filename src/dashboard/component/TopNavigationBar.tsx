@@ -66,6 +66,10 @@ class TopNavigationBar extends Component<AllProps> {
     this.props.history.push('/');
   }
 
+  private goToSearch = () => {
+    this.props.history.push('/search');
+  }
+
   public render(): JSX.Element {
     const { isAuthenticated, t } = this.props;
 
@@ -87,6 +91,8 @@ class TopNavigationBar extends Component<AllProps> {
           <Icon type="idcard" />
           {t('applied')}
         </Menu.Item>
+
+        <ProfileButton icon="search" onClick={this.goToSearch} shape="circle" />
 
         <Secondary>
           <LanguagePicker />

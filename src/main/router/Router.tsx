@@ -6,6 +6,7 @@ import { AppliedContainer } from 'src/applied/container/DashboardContainer';
 
 import { LoginContainer } from '../../authentication/container';
 import { ProfileContainer } from '../../profile/container';
+import { SearchContainer } from '../../search/container/SearchContainer';
 
 import DefaultPrivateRoute from './DefaultPrivateRoute';
 import DefaultRoute from './DefaultRoute';
@@ -17,7 +18,8 @@ function Router(): JSX.Element {
         <Route component={LoginContainer} exact path="/login" />
         <DefaultRoute component={DashboardContainer} exact path="/" />
         <DefaultRoute component={JobsContainer} exact path="/jobs" />
-        <DefaultPrivateRoute component={ProfileContainer} exact path="/profile" />
+        <DefaultRoute component={SearchContainer} exact path="/search" />
+        <DefaultPrivateRoute component={ProfileContainer} exact path="/profile/:id" />
         <DefaultPrivateRoute component={AppliedContainer} exact path="/applied" />
         <Redirect to="/login" />
       </Switch>
