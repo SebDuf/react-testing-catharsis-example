@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { RouteComponentProps, withRouter } from 'react-router';
-import { Login } from 'src/authentication/component';
-import { authenticate, loginAction } from 'src/authentication/action';
+import { Signup } from 'src/authentication/component';
+import { authenticate, signupAction } from 'src/authentication/action';
 import { getAuthenticated } from 'src/authentication/selector';
 import { ApplicationStore } from 'src/main/store/store';
-import {WithTranslation, withTranslation} from 'react-i18next';
 
 interface Props {
   actions: {
     authenticate: () => void;
-    login: (username: any, password: string) => void;
+    signup: (username: any, password: string, profile: any) => void;
   };
   isAuthenticated: boolean;
 }
 
-type AllProps = Props & RouteComponentProps & WithTranslation;
+type AllProps = Props & RouteComponentProps;
 
-class LoginContainer extends Component<AllProps> {
+class SignupContainer extends Component<AllProps> {
 
   public componentDidMount(): void {
     // this.props.actions.authenticate();
@@ -29,10 +28,10 @@ class LoginContainer extends Component<AllProps> {
     }
   }
 
-  private handleLogin = (username: string, password: string) => {
-    const { actions: { login } } = this.props;
+  private handleSignup = (username: string, password: string, profile: any) => {
+    const { actions: { signup } } = this.props;
 
-    login(username, password);
+    signup(username, password, profile);
 
     this.props.history.push('/');
   };
@@ -40,7 +39,7 @@ class LoginContainer extends Component<AllProps> {
   public render(): JSX.Element {
     return (
       <>
-        <Login onLogin={this.handleLogin} />
+        <Signup onSignup={this.handleSignup} />
       </>
     );
   }
@@ -57,13 +56,12 @@ function mapDispatchToProps(dispatch: Function) {
   return {
     actions: {
       authenticate: () => dispatch(authenticate()),
-      login: (username: string, password: string) => dispatch(loginAction(username, password)),
+      signup: (username: string, password: string, profile: any) => dispatch(signupAction(username, password, profile)),
     },
   };
 }
 
-const componentWithTranslation = withTranslation('authentication')(LoginContainer);
-const componentWithRedux = connect(mapStateToProps, mapDispatchToProps)(componentWithTranslation);
+const componentWithRedux = connect(mapStateToProps, mapDispatchToProps)(SignupContainer);
 const componentWithRouter = withRouter(componentWithRedux);
 
 export default componentWithRouter;

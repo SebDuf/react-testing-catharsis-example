@@ -5,6 +5,7 @@ import { JobsContainer } from 'src/jobs/container/JobsContainer';
 import { ResumeContainer } from 'src/resume/container/ResumeContainer';
 
 import { LoginContainer } from '../../authentication/container';
+import { SignupContainer } from '../../authentication/container';
 import { ProfileContainer } from '../../profile/container';
 import { SearchContainer } from '../../search/container/SearchContainer';
 
@@ -16,6 +17,7 @@ function Router(): JSX.Element {
     <BrowserRouter>
       <Switch>
         <Route component={LoginContainer} exact path="/login" />
+        <Route component={SignupContainer} exact path="/signup" />
         <DefaultRoute component={DashboardContainer} exact path="/" />
         <DefaultRoute component={JobsContainer} exact path="/jobs" />
         <DefaultRoute component={SearchContainer} exact path="/search" />

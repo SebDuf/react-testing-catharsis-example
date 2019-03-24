@@ -39,7 +39,14 @@ export class Signup extends React.Component<AllProps> {
       if (!err) {
         const { onSignup } = this.props;
 
-        onSignup('dfbjkdf', 'sdfjkhsdhjfs', { firstName: 'first name', lastName: 'last name' });
+        onSignup(
+          this.props.form.getFieldValue('username'),
+          this.props.form.getFieldValue('password'),
+          {
+            firstName: this.props.form.getFieldValue('firstName'),
+            lastName: this.props.form.getFieldValue('lastName'),
+          },
+        );
       }
     });
   };
@@ -56,24 +63,44 @@ export class Signup extends React.Component<AllProps> {
       rules: [{ required: true, message: t('usernameRequired') }],
     });
 
+    const firstNameRule = getFieldDecorator('firstName', {
+      rules: [{ required: true, message: t('required') }],
+    });
+
+    const lastNameRule = getFieldDecorator('lastName', {
+      rules: [{ required: true, message: t('required') }],
+    });
+
     return (
       <Root data-testid="login">
         <StyledForm onSubmit={this.handleSubmit}>
           <Form.Item>
             {usernameFormRule(
-              <Input data-testid="loginUsernameInput" placeholder={t('username')} prefix={<InputIcon type="user" />} />,
+              <Input placeholder={t('username')} prefix={<InputIcon type="user" />} />,
             )}
           </Form.Item>
 
           <Form.Item>
             {passwordFormRule(
-              <Input data-testid="loginPasswordInput" placeholder={t('password')} prefix={<InputIcon type="lock" />} type="password" />,
+              <Input placeholder={t('password')} prefix={<InputIcon type="lock" />} type="password" />,
+            )}
+          </Form.Item>
+
+          <Form.Item>
+            {firstNameRule(
+              <Input placeholder={t('firstName')} prefix={<InputIcon type="user" />} />,
+            )}
+          </Form.Item>
+
+          <Form.Item>
+            {lastNameRule(
+              <Input placeholder={t('lastName')} prefix={<InputIcon type="user" />} />,
             )}
           </Form.Item>
 
           <Form.Item>
             <Button data-testid="loginButton" htmlType="submit" type="primary">
-              {t('login')}
+              {t('signup')}
             </Button>
           </Form.Item>
         </StyledForm>

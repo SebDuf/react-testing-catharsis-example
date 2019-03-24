@@ -4,6 +4,7 @@ const translations = {
       username: 'Nom d\'utilisateur',
       password: 'Mot de passe',
       login: 'Connexion',
+      signup: 'Inscription',
     },
   },
   en: {
@@ -11,6 +12,7 @@ const translations = {
       username: 'Username',
       password: 'Password',
       login: 'Login',
+      signup: 'Signup',
     },
   },
 };

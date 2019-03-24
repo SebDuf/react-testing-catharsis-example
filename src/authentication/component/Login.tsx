@@ -3,6 +3,7 @@ import React from 'react';
 import { FormComponentProps } from 'antd/lib/form';
 import styled from 'styled-components';
 import { withTranslation, WithTranslation } from 'react-i18next';
+import { RouteComponentProps, withRouter } from 'react-router';
 
 const StyledForm = styled(Form)`
     max-width: 300px;
@@ -25,10 +26,10 @@ const InputIcon = styled(Icon)`
 `;
 
 interface Props {
-  onLogin: () => void;
+  onLogin: (username: string, password: string) => void;
 }
 
-type AllProps = Props & FormComponentProps & WithTranslation
+type AllProps = Props & FormComponentProps & WithTranslation & RouteComponentProps;
 
 export class Login extends React.Component<AllProps> {
 
@@ -39,7 +40,7 @@ export class Login extends React.Component<AllProps> {
       if (!err) {
         const { onLogin } = this.props;
 
-        onLogin();
+        onLogin(this.props.form.getFieldValue('username'), this.props.form.getFieldValue('password'));
       }
     });
   };
@@ -75,6 +76,7 @@ export class Login extends React.Component<AllProps> {
             <Button data-testid="loginButton" htmlType="submit" type="primary">
               {t('login')}
             </Button>
+            <Button onClick={() => this.props.history.push('/signup')}>{this.props.t('signup')}</Button>
           </Form.Item>
         </StyledForm>
       </Root>
@@ -85,5 +87,6 @@ export class Login extends React.Component<AllProps> {
 
 const componentWithForm = Form.create({ name: 'login' })(Login);
 const componentWithTranslation = withTranslation('authentication')(componentWithForm);
+const componentWithRouter = withRouter(componentWithTranslation);
 
-export default componentWithTranslation;
+export default componentWithRouter;
